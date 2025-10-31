@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills - Soumyajit Goswami</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="stars"></div>
+      <a href="../index.html" class="back-btn" data-clickable>← BACK TO MENU</a>
+
+      <div class="page-header">
+        <h1 class="page-title">S K I L L S</h1>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="skills-grid">
+
+          <!-- 🔹 3D Modeling -->
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/maya.png" alt="Maya icon" /></div>
+            <h3>Maya</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 85%"></div></div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/marmoset.png" alt="Marmoset icon" /></div>
+            <h3>Marmoset</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 95%"></div></div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/Marvelous.png" alt="Marvelous Designer icon" /></div>
+            <h3>Marvelous Designer</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 40%"></div></div>
+          </div>
+
+          <!-- 🔹 Sculpting -->
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/zbrush.png" alt="ZBrush icon" /></div>
+            <h3>ZBrush</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 90%"></div></div>
+          </div>
+
+          <!-- 🔹 Texturing -->
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/substance-painter.png" alt="Substance Painter icon" /></div>
+            <h3>Substance Painter</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 92%"></div></div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/photoshop.png" alt="Photoshop icon" /></div>
+            <h3>Photoshop</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 95%"></div></div>
+          </div>
+
+          <!-- 🔹 Rendering -->
+          <div class="skill-card">
+            <div class="skill-icon"><img src="../images/icons/unreal-engine.png" alt="Unreal Engine icon" /></div>
+            <h3>Unreal Engine</h3>
+            <div class="skill-level"><div class="level-bar" style="width: 35%"></div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 Auto color bars based on percentage -->
+    <script>
+      document.querySelectorAll('.skill-card').forEach(card => {
+        const bar = card.querySelector('.level-bar');
+        const widthPercent = parseInt(bar.style.width);
+
+        // Remove previous classes
+        bar.classList.remove('low', 'medium', 'high');
+
+        // Assign new ones based on level
+        if (widthPercent < 40) {
+          bar.classList.add('low');
+        } else if (widthPercent < 75) {
+          bar.classList.add('medium');
+        } else {
+          bar.classList.add('high');
+        }
+      });
+    </script>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/audioEffects.js"></script>
+  </body>
+</html>

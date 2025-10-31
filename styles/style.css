@@ -1,0 +1,615 @@
+/* ===========================
+   RESET & BASE STYLES
+   =========================== */
+   html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+
+}
+
+body {
+  cursor: url("../../images/cursor/cursor1.png"), auto;
+  font-family: "Rajdhani", sans-serif;
+  background: #0a0e1a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   ANIMATED STARS BACKGROUND
+   =========================== */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 100px 200px #fff, 300px 100px #fff, 500px 300px #fff,
+    700px 150px #fff, 900px 400px #fff, 1100px 250px #fff, 150px 450px #fff,
+    450px 500px #fff, 800px 350px #fff, 200px 50px #fff, 600px 450px #fff,
+    1000px 100px #fff, 1200px 300px #fff, 400px 200px #fff, 250px 350px #fff,
+    50px 300px #fff, 850px 200px #fff, 1150px 450px #fff, 350px 400px #fff,
+    550px 50px #fff, 750px 500px #fff;
+  animation: twinkle 3s infinite alternate;
+}
+
+.stars::after {
+  box-shadow: 200px 100px #00d4ff, 400px 300px #00d4ff, 600px 200px #00d4ff,
+    800px 450px #00d4ff, 1000px 350px #00d4ff, 1100px 150px #00d4ff,
+    250px 500px #00d4ff, 550px 400px #00d4ff, 900px 250px #00d4ff;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* ....................... */
+/* Shooting star animation */
+/* Particle float (soft twinkling drift) */
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-8px) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-8px) scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* Shooting star animation (more dynamic streak) */
+@keyframes shoot {
+  0% {
+    transform: translate(0, 0) rotate(-45deg) scaleY(1);
+    opacity: 1;
+    background: rgba(0, 212, 255, 0.8);
+  }
+  50% {
+    transform: translate(200px, 100px) rotate(-45deg) scaleY(1.5);
+    opacity: 0.9;
+    background: rgba(0, 255, 255, 0.9);
+  }
+  100% {
+    transform: translate(400px, 200px) rotate(-45deg) scaleY(2);
+    opacity: 0;
+    background: rgba(0, 255, 255, 0);
+  }
+}
+
+/* Soft parallax drift for stars container */
+.stars {
+  transition: transform 0.25s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Optional: color variation for particles */
+.particle {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+}
+.particle.shooting {
+  background: linear-gradient(45deg, #00d4ff, #00ffff);
+  width: 3px;
+  height: 80px;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+
+/* ===========================
+   LOADING SCREEN
+   =========================== */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#loading-screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loading-content {
+  text-align: center;
+  z-index: 10;
+  animation: fadeInUp 1s ease-out;
+}
+
+.main-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3rem;
+  color: #8892b0;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  color: #00d4ff;
+  margin-bottom: 3rem;
+}
+
+.prompt {
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+  color: #8892b0;
+  animation: pulse 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.8),
+      0 0 40px rgba(0, 212, 255, 0.6);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ===========================
+   MAIN MENU
+   =========================== */
+#main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+  display: none;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+#main-menu.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.planets {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  z-index: 1;
+}
+
+.planet {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, #4a5568, #1a202c);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5),
+    inset -10px -10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.planet-1 {
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+}
+
+.planet-2 {
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  left: 120px;
+  opacity: 0.7;
+}
+
+.menu-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+.menu-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  margin-bottom: 4rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.main-nav ul {
+  list-style: none;
+}
+
+.main-nav li {
+  margin-bottom: 2rem;
+}
+
+.menu-item {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.menu-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: #00d4ff;
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+  transform: translateX(10px) scale(1.2);
+}
+
+.menu-item:hover::before {
+  width: 20px;
+}
+
+.menu-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.avatar-silhouette {
+  width: 400px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.15) 0%,
+    transparent 70%
+  );
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+.avatar-silhouette::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 450px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 212, 255, 0.2) 0%,
+    rgba(0, 212, 255, 0.1) 50%,
+    transparent 100%
+  );
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    85% 30%,
+    80% 70%,
+    50% 100%,
+    20% 70%,
+    15% 30%
+  );
+  filter: blur(20px);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ===========================
+   PROJECTS PAGE
+   =========================== */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+  padding: 2rem;
+  position: relative;
+}
+
+.page-header {
+  text-align: center;
+  padding: 3rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.page-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.back-btn {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  padding: 0.8rem 1.8rem;
+  background: rgba(0, 212, 255, 0.15);
+  border: 2px solid #00d4ff;
+  color: #00d4ff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3) inset;
+  transition: all 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+/* back-btn effects */
+.back-btn:hover {
+  background: rgba(0, 212, 255, 0.3);
+  color: #0a0e1a;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8),
+              0 0 30px rgba(0, 212, 255, 0.5) inset;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Optional: glowing pulse animation */
+@keyframes backBtnGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5),
+                0 0 25px rgba(0, 212, 255, 0.3) inset;
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.8),
+                0 0 35px rgba(0, 212, 255, 0.5) inset;
+  }
+}
+
+.back-btn {
+  animation: backBtnGlow 2s ease-in-out infinite alternate;
+}
+/* ............... */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.project-card {
+  background: rgba(26, 31, 46, 0.6);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+  border-color: #00d4ff;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: rgba(0, 212, 255, 0.3);
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.project-category {
+  font-size: 0.9rem;
+  color: #8892b0;
+  margin-bottom: 1rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  padding: 0.3rem 0.8rem;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: #00d4ff;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .menu-container {
+    flex-direction: column;
+  }
+
+  .menu-left {
+    padding-left: 5%;
+    padding-top: 20%;
+  }
+
+  .menu-right {
+    display: none;
+  }
+
+  .menu-item {
+    font-size: 1.5rem;
+  }
+
+  .planets {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .planet-1 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .planet-2 {
+    width: 40px;
+    height: 40px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}

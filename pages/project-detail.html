@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Detail - Soumyajit Goswami</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/project-detail.css" />
+    <link rel="stylesheet" href="../styles/lightbox.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="stars"></div>
+
+      <a href="projects.html" class="back-btn">← BACK TO PROJECTS</a>
+
+      <div class="project-detail-container">
+        <!-- Project Header -->
+        <div class="project-header">
+          <h1 class="project-title">Cyberpunk City Night</h1>
+          <p class="project-category">Environment Art • 2024</p>
+        </div>
+
+        <!-- Main Content: 3D Circular Carousel -->
+        <div class="project-main">
+          <div class="slideshow-container">
+            <div class="carousel-3d"></div>
+
+            <!-- Navigation Arrows -->
+            <button class="slide-nav prev">‹</button>
+            <button class="slide-nav next">›</button>
+
+            <!-- Slide Indicators -->
+            <div class="slide-indicators"></div>
+
+            <!-- Play/Pause Button -->
+            <button class="play-pause-btn">⏸</button>
+          </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+          <h2>Project Walkthrough</h2>
+          <div class="video-container">
+            <video id="projectVideo" width="100%" preload="auto">
+              <source src="" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- Custom Video Controls -->
+            <div class="video-controls">
+              <button class="video-play-btn">▶</button>
+
+              <div class="video-progress-container">
+                <div class="video-progress-bar"></div>
+              </div>
+
+              <span class="video-time">
+                <span class="current-time">0:00</span> /
+                <span class="duration">0:00</span>
+              </span>
+
+              <button class="video-mute-btn">🔊</button>
+              <button class="video-fullscreen-btn">⛶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="lightbox" class="lightbox">
+        <button class="lightbox-nav left">‹</button>
+        <img id="lightbox-img" />
+        <button class="lightbox-nav right">›</button>
+        <button class="lightbox-close">✕</button>
+      </div>
+    </div>
+
+    <script src="../scripts/audioEffects.js"></script>
+    <script src="../scripts/projectMedia.js"></script>
+    <script src="../scripts/lightbox.js"></script>
+    <script src="../scripts/carousel.js"></script>
+    <script src="../scripts/script.js"></script>
+  </body>
+</html>
