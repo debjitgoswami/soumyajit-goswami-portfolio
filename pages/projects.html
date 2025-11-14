@@ -9,47 +9,47 @@
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
   </head>
   <body>
     <div class="page-container">
       <div class="stars"></div>
-
-      <a href="../index.html" class="back-btn">← BACK TO MENU</a>
-
+      <a id="back-btn" class="back-btn" href="../index.html">← Back</a>
+      <img src="../images/icons/ufo.png" alt="Floating UFO" class="ufo-floating" />
       <div class="page-header">
         <h1 class="page-title">V I E W &nbsp; P R O J E C T S</h1>
       </div>
 
-      <div class="projects-grid">
-      </div>
+      <div class="projects-grid"></div>
     </div>
+
+    <!-- Scripts in correct order -->
+     <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // Restore scroll position if returning from detail page
+    const savedScroll = sessionStorage.getItem('projectsScrollPos');
+    if (savedScroll) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: parseInt(savedScroll),
+          behavior: 'auto' // instant scroll, change to 'smooth' for animated
+        });
+      }, 0);
+    }
+
+    // Save scroll position when clicking any project card or link
+    document.addEventListener('click', (e) => {
+      const projectLink = e.target.closest('.project-card, a[href*="project-detail"]');
+      if (projectLink) {
+        sessionStorage.setItem('projectsScrollPos', window.scrollY);
+      }
+    });
+  });
+</script>
 
     <script src="../scripts/audioEffects.js"></script>
     <script src="../scripts/projectMedia.js"></script>
     <script src="../scripts/script.js"></script>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        
-        // Restore scroll position if returning from detail page
-        const savedScroll = sessionStorage.getItem('projectsScrollPos');
-        if (savedScroll) {
-          setTimeout(() => {
-            window.scrollTo({
-              top: parseInt(savedScroll),
-              behavior: 'instant'
-            });
-          }, 0);
-        }
-
-        // Save scroll position when clicking any project card or link
-        document.addEventListener('click', (e) => {
-          const projectLink = e.target.closest('.project-card, a[href*="project-detail"]');
-          if (projectLink) {
-            sessionStorage.setItem('projectsScrollPos', window.scrollY);
-          }
-        });
-      });
-    </script>
   </body>
 </html>

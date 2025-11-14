@@ -23,39 +23,52 @@
   let lastHoverTime = 0;
   const hoverDelay = 150;
 
-  // Use event delegation on document for better performance and dynamic content
-  document.addEventListener("mouseenter", (e) => {
-    // Check if the hovered element matches our selectors
-    const target = e.target.closest(
-      "a, button, [data-clickable], .project-card, .slide-nav, .indicator, .skill-card, .stat-card"
-    );
-    
+  // FIXED: Use mouseover instead of mouseenter for better event delegation
+  document.addEventListener("mouseover", (e) => {
+    // Safely check if .closest exists before using it
+    const target = e.target.closest
+      ? e.target.closest(
+          "a, button, [data-clickable], .project-card, .slide-nav, .indicator, .skill-card, .stat-card"
+        )
+      : null;
+
     if (!target) return;
 
     const now = Date.now();
     if (now - lastHoverTime < hoverDelay) return;
 
     // Play different sound for skill cards
-    if (target.classList.contains("skill-card" )|| target.classList.contains("stat-card")) {
-      skillHoverSound.currentTime = 0;
-      skillHoverSound.play().catch(() => {});
+    if (
+      target.classList.contains("skill-card") ||
+      target.classList.contains("stat-card")
+    ) {
+      if (skillHoverSound) {
+        skillHoverSound.currentTime = 0;
+        skillHoverSound.play().catch(() => {});
+      }
     } else {
-      hoverSound.currentTime = 0;
-      hoverSound.play().catch(() => {});
+      if (hoverSound) {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(() => {});
+      }
     }
 
     lastHoverTime = now;
-  }, true); // Use capture phase to catch events early
+  });
 
   // Click sound handler
   document.addEventListener("click", (e) => {
-    const el = e.target.closest(
-      "a, button, [data-clickable], .project-card, .slide-nav, .indicator, .skill-card"
-    );
+    // FIXED: Safely check if .closest exists
+    const el = e.target.closest
+      ? e.target.closest("a, button, [data-clickable], .project-card")
+      : null;
+
     if (!el) return;
 
-    clickSound.currentTime = 0;
-    clickSound.play().catch(() => {});
+    if (clickSound) {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+    }
 
     // Handle navigation after 200ms to allow sound
     const href = el.getAttribute("href") || el.getAttribute("data-url");
@@ -75,5 +88,5 @@
     }
   });
 
-  console.log("Audio effects initialized ✅");
+  console.log("✅ Audio effects initialized");
 })();

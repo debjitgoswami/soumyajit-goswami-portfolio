@@ -1,10 +1,17 @@
 // ==========================================
-// UTILITY FUNCTIONS
+// UTILITY FUNCTIONS //// also known as the function of project-detail.js
 // ==========================================
 function getProjectID() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("id") || "1";
+  // If 'parent' and 'sub' are present, return parent to identify main project first
+  // Subproject key will be handled separately
+  return {
+    id: params.get("id"),
+    parent: params.get("parent"),
+    sub: params.get("sub"),
+  };
 }
+
 
 function formatTime(seconds) {
   if (isNaN(seconds)) return "0:00";
@@ -26,29 +33,7 @@ const slideDuration = 3000; // Autoplay interval in ms
 // DOM element references (cached after DOM loads)
 let carousel, indicatorsContainer, playPauseBtn, videoContainer;
 
-// // ==========================================
-// // LIGHTBOX ELEMENTS & STATE
-// // ==========================================
-// const lightboxOverlay = document.createElement('div');
-// lightboxOverlay.id = 'lightbox-overlay';
-// lightboxOverlay.className = 'lightbox-overlay hidden';
-// lightboxOverlay.tabIndex = -1;
-// lightboxOverlay.innerHTML = `
-//   <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-//   <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
-//   <div class="lightbox-content">
-//     <img id="lightbox-image" src="" alt="Expanded project image" />
-//   </div>
-//   <button class="lightbox-next" aria-label="Next image">&#10095;</button>
-// `;
-// document.body.appendChild(lightboxOverlay);
 
-// const lightboxImage = lightboxOverlay.querySelector('#lightbox-image');
-// const closeBtn = lightboxOverlay.querySelector('.lightbox-close');
-// const prevBtn = lightboxOverlay.querySelector('.lightbox-prev');
-// const nextBtn = lightboxOverlay.querySelector('.lightbox-next');
-
-// let currentLightboxIndex = 0;
 
 // ==========================================
 // CAROUSEL FUNCTIONS
@@ -117,57 +102,6 @@ function toggleAutoplay() {
 }
 
 // // ==========================================
-// // LIGHTBOX FUNCTIONS
-// // ==========================================
-// function openLightbox(index) {
-//   currentLightboxIndex = index;
-//   updateLightboxImage();
-//   lightboxOverlay.classList.remove('hidden');
-//   document.body.style.overflow = 'hidden'; // disable scroll while lightbox open
-//   lightboxOverlay.focus();
-// }
-
-// function closeLightbox() {
-//   lightboxOverlay.classList.add('hidden');
-//   document.body.style.overflow = ''; // restore page scroll
-// }
-
-// function updateLightboxImage() {
-//   lightboxImage.src = data.images[currentLightboxIndex];
-//   lightboxImage.alt = `Project image ${currentLightboxIndex + 1}`;
-// }
-
-// function showPrevImage() {
-//   currentLightboxIndex = (currentLightboxIndex - 1 + data.images.length) % data.images.length;
-//   updateLightboxImage();
-// }
-
-// function showNextImage() {
-//   currentLightboxIndex = (currentLightboxIndex + 1) % data.images.length;
-//   updateLightboxImage();
-// }
-
-// function setupLightbox() {
-//   document.querySelectorAll('.slide img').forEach((img, index) => {
-//     img.style.cursor = 'zoom-in';
-//     img.addEventListener('click', () => openLightbox(index));
-//   });
-
-//   lightboxOverlay.addEventListener('click', e => {
-//     if (e.target === lightboxOverlay) closeLightbox();
-//   });
-
-//   closeBtn.addEventListener('click', closeLightbox);
-//   prevBtn.addEventListener('click', showPrevImage);
-//   nextBtn.addEventListener('click', showNextImage);
-
-//   document.addEventListener('keydown', e => {
-//     if (lightboxOverlay.classList.contains('hidden')) return;
-//     if (e.key === 'Escape') closeLightbox();
-//     else if (e.key === 'ArrowLeft') showPrevImage();
-//     else if (e.key === 'ArrowRight') showNextImage();
-//   });
-// }
 
 // ==========================================
 // BUILD CAROUSEL FUNCTION
@@ -248,9 +182,26 @@ document.addEventListener("DOMContentLoaded", () => {
   indicatorsContainer = document.querySelector(".slide-indicators");
   playPauseBtn = document.querySelector(".play-pause-btn");
   videoContainer = document.querySelector(".video-container");
+const savedScroll = sessionStorage.getItem("projects_scroll");
+  const params = getProjectID();
+  let data = null;
 
-  const projectID = getProjectID();
-  const data = projects[projectID]; // Ensure projects is accessible
+  if (params.parent && params.sub && projects[params.parent]) {
+    // Find the subproject in parent's subprojects
+    data = projects[params.parent].subprojects.find(
+      (s) => s.key === params.sub
+    );
+  } else if (params.id && projects[params.id]) {
+    data = projects[params.id];
+  } else {
+    // Fallback default project
+    data = projects["1"];
+  }
+
+  if (!data) {
+    console.error("Project data not found.");
+    return;
+  }
 
   document.querySelector(".project-title").textContent = data.title;
   document.querySelector(".project-category").textContent = data.category;

@@ -1,4 +1,7 @@
+// ---------------------------
 // projectMedia.js
+// Data storage only - no DOM manipulation
+// ---------------------------
 
 const projects = {
   1: {
@@ -123,6 +126,118 @@ const projects = {
   },
 
   6: {
+    title: "Character 8",
+    category: "Character Design",
+    thumbnail: "../images/Renders/Character8/All3.jpg",
+
+    subprojects: [
+      {
+        key: "farkas",
+        title: "Farkas",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Farkas/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Farkas/z1.jpg",
+          "../images/Renders/Character8/Farkas/z2.jpg",
+          "../images/Renders/Character8/Farkas/z3.jpg",
+          "../images/Renders/Character8/Farkas/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Farkas/Farkas_vid.mp4"],
+      },
+
+      {
+        key: "lily",
+        title: "Lily",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Lily/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Lily/z1.jpg",
+          "../images/Renders/Character8/Lily/z2.jpg",
+          "../images/Renders/Character8/Lily/z3.jpg",
+          "../images/Renders/Character8/Lily/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Lily/lily_vid.mp4"],
+      },
+
+      {
+        key: "medve",
+        title: "Medve",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Medve/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Medve/z1.jpg",
+          "../images/Renders/Character8/Medve/z2.jpg",
+          "../images/Renders/Character8/Medve/z3.jpg",
+          "../images/Renders/Character8/Medve/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Medve/Medve_vid.mp4"],
+      },
+
+      {
+        key: "reindeer",
+        title: "Reindeer",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Reindeer/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Reindeer/z1.jpg",
+          "../images/Renders/Character8/Reindeer/z2.jpg",
+          "../images/Renders/Character8/Reindeer/z3.jpg",
+          "../images/Renders/Character8/Reindeer/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Reindeer/Reindeer_vid.mp4"],
+      },
+
+      {
+        key: "simon",
+        title: "Simon",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Simon/Simon.png",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Simon/Simon.png",
+          "../images/Renders/Character8/Simon/Simon001.png",
+          "../images/Renders/Character8/Simon/Simon002.png",
+        ],
+        video: ["../images/Renders/Character8/Simon/Simon_vid.mp4"],
+      },
+
+      {
+        key: "vicky",
+        title: "Vicky",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Vicky/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Vicky/z1.jpg",
+          "../images/Renders/Character8/Vicky/z2.jpg",
+          "../images/Renders/Character8/Vicky/z3.jpg",
+          "../images/Renders/Character8/Vicky/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Vicky/Vicky_vid.mp4"],
+      },
+
+      {
+        key: "will",
+        title: "Will",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Will/z1.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Will/z1.jpg",
+          "../images/Renders/Character8/Will/z2.jpg",
+          "../images/Renders/Character8/Will/z3.jpg",
+          "../images/Renders/Character8/Will/z4.jpg",
+        ],
+        // video: ["../images/Renders/Character8/Will/Will_vid.mp4"],
+      },
+    ],
+  },
+
+  7: {
     title: "Robot",
     category: "Character Design",
     images: [
@@ -142,7 +257,7 @@ const projects = {
     thumbnail: "../images/Renders/Robot/soumyajit-db.jpg",
   },
 
-  7: {
+  8: {
     title: "Angle",
     category: "Character Design",
     images: [
@@ -154,7 +269,7 @@ const projects = {
     thumbnail: "../images/Renders/Angle/soumyajit-2.jpg",
   },
 
-  8: {
+  9: {
     title: "Environmental Design",
     category: "Environmental Design",
     images: [
@@ -172,7 +287,7 @@ const projects = {
     ],
     thumbnail: "../images/Renders/Bg/soumyajit-abandoned-house.jpg",
   },
-  9: {
+  10: {
     title: "Krang",
     category: "Character Design",
     images: [
@@ -186,7 +301,7 @@ const projects = {
     thumbnail: "../images/Renders/Krang/soumyajit-31.jpg",
   },
 
-  10: {
+  11: {
     title: "Orc",
     category: "Character Design",
     images: [
@@ -196,11 +311,11 @@ const projects = {
       "../images/Renders/Orc/soumyajit-23.jpg",
     ],
     video: ["../images/Renders/Orc/ork-002.mp4"],
-    tech: ["ZBrush","Marmoset Toolbag", "Photoshop"],
-    thumbnail: "../images/Renders/Orc/soumyajit-20.jpg",
+    tech: ["ZBrush", "Marmoset Toolbag", "Photoshop"],
+    thumbnail: "../images/Renders/Orc/soumyajit-thumb.jpg",
   },
 
-  11: {
+  12: {
     title: "Paintings",
     category: "Illustration",
     images: [
@@ -216,11 +331,11 @@ const projects = {
       "../images/Renders/Paintings/soumyajit-img-10.jpeg",
     ],
 
-    tech: [ "Traditional Painting"],
+    tech: ["Traditional Painting"],
     thumbnail: "../images/Renders/Paintings/soumyajit-img-10.jpeg",
   },
 
-  12: {
+  13: {
     title: "Sketches",
     category: "Illustration",
     images: [
@@ -237,39 +352,6 @@ const projects = {
     ],
 
     tech: ["Traditional Sketch"],
-    thumbnail: "../images/Renders/Sketches/soumyajit-img-6.jpg",
+    thumbnail: "../images/Renders/Sketches/soumyajit-img-thum.jpg",
   },
 };
-
-  // add more projects if needed
-
-
-const projectsGrid = document.querySelector(".projects-grid");
-
-for (let key in projects) {
-  const project = projects[key];
-
-  const projectCard = document.createElement("div");
-  projectCard.classList.add("project-card");
-
-  projectCard.innerHTML = `
-    <img src="${project.thumbnail}" alt="${
-    project.title
-  }" class="project-thumbnail" />
-    <div class="project-info">
-      <h3 class="project-title">${project.title}</h3>
-      <p class="project-category">${project.category}</p>
-      <div class="tech-tags">
-        ${project.tech
-          .map((tech) => `<span class="tech-tag">${tech}</span>`)
-          .join("")}
-      </div>
-    </div>
-  `;
-
-  projectCard.addEventListener("click", () => {
-    window.location.href = `project-detail.html?id=${key}`;
-  });
-
-  projectsGrid.appendChild(projectCard);
-}

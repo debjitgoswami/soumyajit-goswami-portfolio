@@ -11,14 +11,15 @@
       href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
   </head>
 
   <body>
     <div class="page-container">
       <div class="stars"></div>
 
-      <a href="projects.html" class="back-btn">← BACK TO PROJECTS</a>
-
+      <a id="back-btn" class="back-btn">← Back</a>
+      <img src="../images/icons/ufo.png" alt="Floating UFO" class="ufo-floating" />
       <div class="project-detail-container">
         <!-- Project Header -->
         <div class="project-header">
@@ -78,7 +79,7 @@
         <button class="lightbox-close">✕</button>
       </div>
     </div>
-
+    <script>sessionStorage.removeItem("came_from_projects");</script>
     <script src="../scripts/audioEffects.js"></script>
     <script src="../scripts/projectMedia.js"></script>
     <script src="../scripts/lightbox.js"></script>
