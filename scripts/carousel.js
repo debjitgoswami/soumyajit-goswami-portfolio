@@ -12,7 +12,6 @@ function getProjectID() {
   };
 }
 
-
 function formatTime(seconds) {
   if (isNaN(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -32,8 +31,6 @@ const slideDuration = 3000; // Autoplay interval in ms
 
 // DOM element references (cached after DOM loads)
 let carousel, indicatorsContainer, playPauseBtn, videoContainer;
-
-
 
 // ==========================================
 // CAROUSEL FUNCTIONS
@@ -101,7 +98,23 @@ function toggleAutoplay() {
   }
 }
 
-// // ==========================================
+// ==========================================
+// Remove skeleton loading placeholders on images load
+// ==========================================
+function removeSkeletonOnLoad() {
+  document.querySelectorAll(".slide-image-wrapper img").forEach((img) => {
+    if (img.complete) {
+      img.parentElement.classList.remove("skeleton");
+    } else {
+      img.addEventListener("load", () => {
+        img.parentElement.classList.remove("skeleton");
+      });
+      img.addEventListener("error", () => {
+        img.parentElement.classList.remove("skeleton");
+      });
+    }
+  });
+}
 
 // ==========================================
 // BUILD CAROUSEL FUNCTION
@@ -114,7 +127,13 @@ function buildCarousel(data) {
     const slide = document.createElement("div");
     slide.className = "slide";
     slide.dataset.index = index;
-    slide.innerHTML = `<img src="${img}" alt="Project Image ${index + 1}" style="width:100%;height:100%;object-fit:cover;">`;
+    slide.innerHTML = `
+      <div class="slide-image-wrapper skeleton">
+        <img src="${img}" alt="Project Image ${
+      index + 1
+    }" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    `;
     carousel.appendChild(slide);
 
     const indicator = document.createElement("span");
@@ -128,8 +147,10 @@ function buildCarousel(data) {
   currentSlideIndex = 0;
   updateCarousel();
 
-  // setupLightbox();
+  // Remove skeleton loaders once images are loaded
+  removeSkeletonOnLoad();
 
+  // Setup video section (unchanged)
   const videoSection = document.querySelector(".video-section");
   const videoContainer = videoSection.querySelector(".video-container");
 
@@ -182,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   indicatorsContainer = document.querySelector(".slide-indicators");
   playPauseBtn = document.querySelector(".play-pause-btn");
   videoContainer = document.querySelector(".video-container");
-const savedScroll = sessionStorage.getItem("projects_scroll");
+  const savedScroll = sessionStorage.getItem("projects_scroll");
   const params = getProjectID();
   let data = null;
 
