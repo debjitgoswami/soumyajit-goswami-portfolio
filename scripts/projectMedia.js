@@ -132,6 +132,24 @@ const projects = {
 
     subprojects: [
       {
+        key: "aaron",
+        title: "Aaron",
+        category: "Character Subproject",
+        thumbnail: "../images/Renders/Character8/Aaron/Aaron.jpg",
+        tech: ["Zbrush", "Substance Painter", "Maya"],
+        images: [
+          "../images/Renders/Character8/Aaron/Aaron.jpg",
+          "../images/Renders/Character8/Aaron/Aaron001.jpg",
+          "../images/Renders/Character8/Aaron/Aaron002.jpg",
+          "../images/Renders/Character8/Aaron/z1.jpg",
+          "../images/Renders/Character8/Aaron/z2.jpg",
+          "../images/Renders/Character8/Aaron/z3.jpg",
+          "../images/Renders/Character8/Aaron/z4.jpg",
+        ],
+        video: ["../images/Renders/Character8/Aaron/Aaron_vid.mp4"],
+      },
+
+      {
         key: "farkas",
         title: "Farkas",
         category: "Character Subproject",
@@ -239,15 +257,19 @@ const projects = {
         key: "will",
         title: "Will",
         category: "Character Subproject",
-        thumbnail: "../images/Renders/Character8/Will/z1.jpg",
+        thumbnail: "../images/Renders/Character8/Will/Will003.jpg",
         tech: ["Zbrush", "Substance Painter", "Maya"],
         images: [
+          "../images/Renders/Character8/Will/Will.jpg",
+          "../images/Renders/Character8/Will/Will001.jpg",
+          "../images/Renders/Character8/Will/Will002.jpg",
+          "../images/Renders/Character8/Will/Will003.jpg",
           "../images/Renders/Character8/Will/z1.jpg",
           "../images/Renders/Character8/Will/z2.jpg",
           "../images/Renders/Character8/Will/z3.jpg",
           "../images/Renders/Character8/Will/z4.jpg",
         ],
-        // video: ["../images/Renders/Character8/Will/Will_vid.mp4"],
+        video: ["../images/Renders/Character8/Will/Will_vid.mp4"],
       },
     ],
   },
